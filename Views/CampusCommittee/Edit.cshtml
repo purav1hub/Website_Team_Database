@@ -1,0 +1,119 @@
+@model GECPATAN_FACULTY_PORTAL.Models.CampusCommittee
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>CampusCommittee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TitleImage" class="control-label"></label>
+                <input asp-for="TitleImage" class="form-control" />
+                <span asp-validation-for="TitleImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="About" class="control-label"></label>
+                <input asp-for="About" class="form-control" />
+                <span asp-validation-for="About" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Measures" class="control-label"></label>
+                <input asp-for="Measures" class="form-control" />
+                <span asp-validation-for="Measures" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MeasureImage" class="control-label"></label>
+                <input asp-for="MeasureImage" class="form-control" />
+                <span asp-validation-for="MeasureImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubObjImg" class="control-label"></label>
+                <input asp-for="SubObjImg" class="form-control" />
+                <span asp-validation-for="SubObjImg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BulletPointsImg" class="control-label"></label>
+                <input asp-for="BulletPointsImg" class="form-control" />
+                <span asp-validation-for="BulletPointsImg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PageFlyer" class="control-label"></label>
+                <input asp-for="PageFlyer" class="form-control" />
+                <span asp-validation-for="PageFlyer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tagline" class="control-label"></label>
+                <input asp-for="Tagline" class="form-control" />
+                <span asp-validation-for="Tagline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogLink" class="control-label"></label>
+                <input asp-for="BlogLink" class="form-control" />
+                <span asp-validation-for="BlogLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Link" class="control-label"></label>
+                <input asp-for="Link" class="form-control" />
+                <span asp-validation-for="Link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShowDocument" class="control-label"></label>
+                <input asp-for="ShowDocument" class="form-control" />
+                <span asp-validation-for="ShowDocument" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TableView" class="control-label"></label>
+                <input asp-for="TableView" class="form-control" />
+                <span asp-validation-for="TableView" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsDeleted" class="control-label"></label>
+                <input asp-for="IsDeleted" class="form-control" />
+                <span asp-validation-for="IsDeleted" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedDate" class="control-label"></label>
+                <input asp-for="CreatedDate" class="form-control" />
+                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedDateInt" class="control-label"></label>
+                <input asp-for="CreatedDateInt" class="form-control" />
+                <span asp-validation-for="CreatedDateInt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdatedDate" class="control-label"></label>
+                <input asp-for="UpdatedDate" class="form-control" />
+                <span asp-validation-for="UpdatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdatedDateInt" class="control-label"></label>
+                <input asp-for="UpdatedDateInt" class="form-control" />
+                <span asp-validation-for="UpdatedDateInt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -3,8 +3,11 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using System;
+using Microsoft.Extensions.DependencyInjection;
 
     var builder = WebApplication.CreateBuilder(args);
+    builder.Services.AddDbContext<FacultyPortalContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("Default") ?? throw new InvalidOperationException("Connection string 'FacultyPortalContext' not found.")));
 
     // Add services to the container.
     builder.Services.AddControllersWithViews();

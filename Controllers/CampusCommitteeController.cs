@@ -1,31 +1,30 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GECPATAN_FACULTY_PORTAL.Data;
 using GECPATAN_FACULTY_PORTAL.Models;
 
 namespace GECPATAN_FACULTY_PORTAL.Controllers
 {
-    public class FacultyMembersController : Controller
+    public class CampusCommitteeController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly FacultyPortalContext _context;
 
-        public FacultyMembersController(ApplicationDbContext context)
+        public CampusCommitteeController(FacultyPortalContext context)
         {
             _context = context;
         }
 
-        // GET: FacultyMembers
+        // GET: CampusCommittee
         public async Task<IActionResult> Index()
         {
-            return View(await _context.FacultyMember.ToListAsync());
+            return View(await _context.CampusCommittee.ToListAsync());
         }
 
-        // GET: FacultyMembers/Details/5
+        // GET: CampusCommittee/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +32,39 @@ namespace GECPATAN_FACULTY_PORTAL.Controllers
                 return NotFound();
             }
 
-            var facultyMember = await _context.FacultyMember
+            var campusCommittee = await _context.CampusCommittee
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (facultyMember == null)
+            if (campusCommittee == null)
             {
                 return NotFound();
             }
 
-            return View(facultyMember);
+            return View(campusCommittee);
         }
 
-        // GET: FacultyMembers/Create
+        // GET: CampusCommittee/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: FacultyMembers/Create
+        // POST: CampusCommittee/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Designation,EmailID,Department")] FacultyMember facultyMember)
+        public async Task<IActionResult> Create([Bind("Id,Title,TitleImage,About,Measures,MeasureImage,SubObjImg,BulletPointsImg,PageFlyer,Tagline,BlogLink,Link,ShowDocument,TableView,IsDeleted,CreatedDate,CreatedDateInt,UpdatedDate,UpdatedDateInt")] CampusCommittee campusCommittee)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(facultyMember);
+                _context.Add(campusCommittee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(facultyMember);
+            return View(campusCommittee);
         }
 
-        // GET: FacultyMembers/Edit/5
+        // GET: CampusCommittee/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +72,22 @@ namespace GECPATAN_FACULTY_PORTAL.Controllers
                 return NotFound();
             }
 
-            var facultyMember = await _context.FacultyMember.FindAsync(id);
-            if (facultyMember == null)
+            var campusCommittee = await _context.CampusCommittee.FindAsync(id);
+            if (campusCommittee == null)
             {
                 return NotFound();
             }
-            return View(facultyMember);
+            return View(campusCommittee);
         }
 
-        // POST: FacultyMembers/Edit/5
+        // POST: CampusCommittee/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Designation,EmailID,Department")] FacultyMember facultyMember)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,TitleImage,About,Measures,MeasureImage,SubObjImg,BulletPointsImg,PageFlyer,Tagline,BlogLink,Link,ShowDocument,TableView,IsDeleted,CreatedDate,CreatedDateInt,UpdatedDate,UpdatedDateInt")] CampusCommittee campusCommittee)
         {
-            if (id != facultyMember.Id)
+            if (id != campusCommittee.Id)
             {
                 return NotFound();
             }
@@ -97,12 +96,12 @@ namespace GECPATAN_FACULTY_PORTAL.Controllers
             {
                 try
                 {
-                    _context.Update(facultyMember);
+                    _context.Update(campusCommittee);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FacultyMemberExists(facultyMember.Id))
+                    if (!CampusCommitteeExists(campusCommittee.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +112,10 @@ namespace GECPATAN_FACULTY_PORTAL.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(facultyMember);
+            return View(campusCommittee);
         }
 
-        // GET: FacultyMembers/Delete/5
+        // GET: CampusCommittee/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,34 +123,34 @@ namespace GECPATAN_FACULTY_PORTAL.Controllers
                 return NotFound();
             }
 
-            var facultyMember = await _context.FacultyMember
+            var campusCommittee = await _context.CampusCommittee
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (facultyMember == null)
+            if (campusCommittee == null)
             {
                 return NotFound();
             }
 
-            return View(facultyMember);
+            return View(campusCommittee);
         }
 
-        // POST: FacultyMembers/Delete/5
+        // POST: CampusCommittee/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var facultyMember = await _context.FacultyMember.FindAsync(id);
-            if (facultyMember != null)
+            var campusCommittee = await _context.CampusCommittee.FindAsync(id);
+            if (campusCommittee != null)
             {
-                _context.FacultyMember.Remove(facultyMember);
+                _context.CampusCommittee.Remove(campusCommittee);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FacultyMemberExists(int id)
+        private bool CampusCommitteeExists(int id)
         {
-            return _context.FacultyMember.Any(e => e.Id == id);
+            return _context.CampusCommittee.Any(e => e.Id == id);
         }
     }
 }
